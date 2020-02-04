@@ -3,7 +3,7 @@ Distinguish Korean spam messages with Machine Learning.
 
 ## Begining
 
-Recently, I got annoyed with spam messages that keeps coming to my phone. I have seen several articles about how some data scientists put deep learning into distinguishing spam messages in Korean. I thought it would be cool to make your own spam detector since I recently seen some patterns of spam messages. So I decided to make one. However, this is my first time with Machine Learning. I do not know **anything** about it. I had no clue where to start before I read an article about Naive Bayes classifier. After reading this, I thought this is what I should use for my project.
+Recently, I got annoyed with spam messages that keeps coming to my phone. I have seen several articles about how some data scientists put deep learning into distinguishing spam messages in Korean. I thought it would be cool to make your own spam detector since I recently seen some patterns of spam messages. So I decided to make one. However, this is my first time with Machine Learning. I do not know **anything** about it. I had no clue where to start before I read an article about **Naive Bayes classifier**. After reading this, I thought this is what I should use for my project.
 
 ## First Guess
 
