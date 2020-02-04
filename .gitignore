@@ -110,6 +110,9 @@ ENV/
 env.bak/
 venv.bak/
 
+# MacOS
+.DS_Store
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -127,3 +130,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+messages.csv
