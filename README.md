@@ -23,7 +23,7 @@ I would definitely say that Pattern number 4 is not typically true, not really a
 
 ## First Try
 
-First of all, I used KRWordBank Library to find out the words that are mostly in spam messages. The top 5 words that spam messages include:
+First of all, I used [KRWordBank](https://github.com/lovit/kr-wordrank) Library to find out the words that are mostly in spam messages. The top 5 words that spam messages include:
 
 1. ```"[Web 발신]" - meaning that it is sent from the web.```
 2. ```"[국제발신]" - meaning that it is sent from overseas.```
