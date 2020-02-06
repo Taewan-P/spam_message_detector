@@ -20,6 +20,9 @@ def count_keywords(word): # returns [spam_count, ham_count]
         result[1] += 1
   return result
 
+def probability_calc(condition, total, k):
+  return (condition + k) / (total + 2 * k)
+
 
 with open('messages.csv', newline='') as csvfile:
   spamreader = csv.reader(csvfile)
@@ -31,7 +34,7 @@ with open('messages.csv', newline='') as csvfile:
     total.append(row) # Whole data
     if row[1] == 'spam':
       analysis.append(a) # Analysis for only spam messages
-
+    
   wordrank_extractor = KRWordRank(
     min_count = 5,
     max_length = 10,
@@ -45,9 +48,15 @@ with open('messages.csv', newline='') as csvfile:
   top_spam_keywords = spam_keywords[1:6] # This keyword list should be changed depending on what you wish to train.
 
   counted_keywords = {}
+  counted_spam_probability = {}
   for k in top_spam_keywords:
-    newkey = {k: count_keywords(k)}
+    counted = count_keywords(k)
+    newkey = {k: counted}
     counted_keywords.update(newkey)
-  print(counted_keywords)
+    spamprob = {k: probability_calc(counted[0], len(analysis), 0.5)}
+    counted_spam_probability.update(spamprob)
+  
+  print(spamprob)
   
   
+
