@@ -65,5 +65,11 @@ The most common word "[Web발신]" is more common in regular ham messages. Well 
 
 
 
-To be continued...
+### The Probability
+
+If I picked a spam message, The probability of the message including "A" = spam A word count / total spam.
+
+For example, number 2, "[국제발신]". The probability of the message including that word being a spam is ```54/150 = 36%```.  If you include Laplace Smoothing, it would be ```54+0.5/150+1 = 36.09% ```. Pretty much the same. Let's calculate the rest of the probability.
+
+
 
