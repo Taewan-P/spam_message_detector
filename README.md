@@ -61,7 +61,7 @@ After running this code, I found out that the word that is common in spam messag
 
 
 
-The most common word "[Web발신]" is more common in regular ham messages. Well this is because the data I have for ham messages are way more than spam messages, and that phrase will be always in front of your message when you send a message via internet. Well, I decided to use the sixth most common word in spam messages : ```"PW" - meaning password.```
+The most common word "[Web발신]" is more common in regular ham messages. Well this is because the data I have for ham messages are way more than spam messages, and that phrase will be always in front of your message when you send a message via internet. Well, I decided to use the sixth most common word instead of  "[Web발신]" : ```"PW" - meaning password.```
 
 
 
@@ -69,7 +69,15 @@ The most common word "[Web발신]" is more common in regular ham messages. Well 
 
 If I picked a spam message, The probability of the message including "A" = spam A word count / total spam.
 
-For example, number 2, "[국제발신]". The probability of the message including that word being a spam is ```54/150 = 36%```.  If you include Laplace Smoothing, it would be ```54+0.5/150+1 = 36.09% ```. Pretty much the same. Let's calculate the rest of the probability.
+For example, number 2, "[국제발신]". The probability of the picked spam message including that word being a spam is ```54/150 = 36%```.  If you include Laplace Smoothing, it would be ```54+0.5/150+1 = 36.09% ```. Pretty much the same. Let's calculate the rest of the probability.
+
+```reStructuredText
+1. "[국제발신]" : 0.3609271523178808
+2. "무료거부" : 0.20860927152317882
+3. "lD" : 0.06291390728476821
+4. "(광고)" : 0.30132450331125826
+5. "PW" : 0.06291390728476821
+```
 
 
 
