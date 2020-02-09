@@ -49,14 +49,28 @@ with open('messages.csv', newline='') as csvfile:
 
   counted_keywords = {}
   counted_spam_probability = {}
+  # counted = [spam, nonspam]
   for k in top_spam_keywords:
     counted = count_keywords(k)
     newkey = {k: counted}
     counted_keywords.update(newkey)
     spamprob = {k: probability_calc(counted[0], len(analysis), 0.5)}
     counted_spam_probability.update(spamprob)
-  
-  print(spamprob)
+
+  # P(c)
+  prob_spam = probability_calc(len(analysis), len(total), 0)
+  # P(~c)
+  prob_not_spam = 1 - prob_spam
+
+  log_prob_spam = math.log(probability_calc(len(analysis), len(total), 0))
+  log_prob_not_spam = math.log(1 - probability_calc(len(analysis), len(total), 0))
+  print(prob_spam)
+  print(prob_not_spam)
+  print(log_prob_spam)
+  print(log_prob_not_spam)
+  print(counted_spam_probability) # P(x|c)s
+  # P(c)
+
   
   
 
