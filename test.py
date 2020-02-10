@@ -16,6 +16,9 @@ def count_keywords(word): # returns [spam_count, ham_count]
 def probability_calc(condition, total, k):
   return (condition + k) / (total + 2 * k)
 
+def naivebayes_classifier(pxc,px_nc, pc):
+  return (pxc*pc) / (pxc*pc + px_nc*(1-pc))
+
 
 with open('messages.csv', newline='') as csvfile:
   spamreader = csv.reader(csvfile)
@@ -36,34 +39,38 @@ with open('messages.csv', newline='') as csvfile:
   beta = 0.85
   max_iter = 10
 
+  # What we want to do : (p(x|c)p(c)) / (p(x|c)p(c) + p(x|ㄱc)p(ㄱc))
   keywords, rank, graph = wordrank_extractor.extract(analysis, beta, max_iter)
   spam_keywords = list(keywords)
   top_spam_keywords = spam_keywords[1:6] # This keyword list should be changed depending on what you wish to train.
 
   counted_keywords = {}
   counted_spam_probability = {}
+  counted_ham_probability = {}
   # counted = [spam, nonspam]
   for k in top_spam_keywords:
     counted = count_keywords(k)
     newkey = {k: counted}
     counted_keywords.update(newkey)
-    spamprob = {k: probability_calc(counted[0], len(analysis), 0.5)}
+    spamprob = {k: probability_calc(counted[0], len(analysis), 0.5)} # P(x|c)
+    hamprob = {k: probability_calc(counted[1], len(total) - len(analysis), 0.5)} # P(x|ㄱc)
     counted_spam_probability.update(spamprob)
+    counted_ham_probability.update(hamprob)
 
-  # P(c)
+  # P(x|ㄱc) is the probability of a ham message including the "word" not being a spam message=(ham).
+
+
+  # P(c) is the probability of the message being a spam
   prob_spam = probability_calc(len(analysis), len(total), 0)
   # P(~c)
   prob_not_spam = 1 - prob_spam
 
-  log_prob_spam = math.log(probability_calc(len(analysis), len(total), 0))
-  log_prob_not_spam = math.log(1 - probability_calc(len(analysis), len(total), 0))
-  print(prob_spam)
-  print(prob_not_spam)
-  print(log_prob_spam)
-  print(log_prob_not_spam)
-  print(counted_spam_probability) # P(x|c)s
-  # P(c)
-
+  # log_prob_spam = math.log(probability_calc(len(analysis), len(total), 0))
+  # log_prob_not_spam = math.log(1 - probability_calc(len(analysis), len(total), 0))
   
+  answer = {}
+  for p in top_spam_keywords:
+    temp = {p: naivebayes_classifier(counted_spam_probability[p], counted_ham_probability[p], prob_spam)}
+    answer.update(temp)
   
-
+  print(answer)
