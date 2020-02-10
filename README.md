@@ -1,6 +1,8 @@
 # spam_message_detector
 Distinguish Korean spam messages with Machine Learning.
 
+**Well, Right now this is not a detector, but close to an analysis report. Please read the whole README.md to see what is going on.😄**
+
 ## Beginning
 
 Recently, I got annoyed with spam messages that keeps coming to my phone. I have seen several articles about how some data scientists put deep learning into distinguishing spam messages in Korean. I thought it would be cool to make your own spam detector since I recently seen some patterns of spam messages. So I decided to make one. However, this is my first time with Machine Learning. I do not know **anything** about it. I had no clue where to start before I read an article about **Naive Bayes classifier**. After reading this, I thought this is what I should use for my project.
@@ -65,7 +67,7 @@ The most common word "[Web발신]" is more common in regular ham messages. Well 
 
 
 
-### The Probability
+### The Probability of P(x|c)
 
 If I picked a spam message, The probability of the message including "A" = spam A word count / total spam.
 
@@ -81,3 +83,56 @@ For example, number 2, "[국제발신]". The probability of the picked spam mess
 
 
 
+### P(c)s
+
+In my case, the P(c)s are the probability of a message being a spam.
+
+```python
+  # P(c) is the probability of the message being a spam
+  # len(analysis) is the value of total spam messages out of the data extracted from my csv.
+  # len(total) is the value of total messages including spam and ham message.
+  prob_spam = probability_calc(len(analysis), len(total), 0)
+  # P(~c)
+  prob_not_spam = 1 - prob_spam
+```
+
+#### Result
+
+```
+P(c) : 0.1038781163434903
+P(~c) : 0.8961218836565097
+```
+
+
+
+### The Mighty Formula
+
+What is this title about? I am talking about the Naive Bayes Classifier formula!
+
+```P(c|x) = P(x|c) P(c) / { P(x|c) P(c) + P(x|~c) P(~c) }```
+
+I am using this formula because I did not assume ```P(c) = P(~c) = 0.5```. That's why the denominator is longer that usual.
+
+
+
+### Calculation Finished.
+
+Well... I calculated the results for the top 5 spam words that spam messages include. The probability of the message being a spam when a message includes this word is...
+
+```
+"[국제발신]" : 0.538144824492084
+"무료거부" : 0.8506066969512376
+"lD" : 0.949720339750663
+"(광고)" : 0.6678162925754492
+"PW" : 0.8629433434994991
+```
+
+Pretty interesting huh? You can see that not all the top rank words have high probabilities.
+
+
+
+### To Be Continued...
+
+Well, I guess this is it for now. I do not have enough data to train the model I wanted to make. Not only there is no Korean Spam message dataset in the Internet, but also the dataset that exists is quite different that what I am looking for. The dataset I used for analysis is extracted from **MY PHONE**, so I guess I have to wait again to get some spam messages stacked. Haha
+
+If you have spam messages dataset in Korean, feel free to open an issue or email me through swimingtw@gmail.com. If there is something wrong with my article, feel free to open an issue and correct me. As I mentioned above, I am new to Machine Learning and I am in a process of learning new things. Thank you for reading.
