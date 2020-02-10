@@ -1,12 +1,5 @@
 import csv
-from math import log
 from collections import defaultdict
-import re
-import math
-import numpy as np
-import random
-import pandas as pd
-import matplotlib.pyplot as plt
 from krwordrank.word import KRWordRank
 
 
