@@ -133,6 +133,6 @@ Pretty interesting huh? You can see that not all the top rank words have high pr
 
 ### To Be Continued...
 
-Well, I guess this is it for now. I do not have enough data to train the model I wanted to make. Not only there is no Korean Spam message dataset in the Internet, but also the dataset that exists is quite different that what I am looking for. The dataset I used for analysis is extracted from **MY PHONE**, so I guess I have to wait again to get some spam messages stacked. Haha
+Well, I guess this is it for now. I do not have enough data to train the model I wanted to make. Not only there is no Korean Spam message dataset in the Internet, but also the dataset that exists is quite different from what I am looking for. The dataset I used for analysis is extracted from **MY PHONE**, so I guess I have to wait again to get some spam messages stacked. Haha
 
 If you have spam messages dataset in Korean, feel free to open an issue or email me through swimingtw@gmail.com. If there is something wrong with my article, feel free to open an issue and correct me. As I mentioned above, I am new to Machine Learning and I am in a process of learning new things. Thank you for reading.
